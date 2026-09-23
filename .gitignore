@@ -1,0 +1,5 @@
+backend/.env
+fontend/kushop/.env.local
+fontend/kushop/.env.*.local
+**/node_modules/
+fontend/kushop/dist/

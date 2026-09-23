@@ -1,16 +1,18 @@
-import pkg from "pg"
-import dotenv from 'dotenv'
+import mysql from "mysql2/promise";
+import dotenv from "dotenv";
 
-const {Pool} =pkg
-dotenv.config()
+dotenv.config();
 
-const DBSERVER = process.env.DBSERVER
-const DBUSER = process.env.DBUSER
-const DBPWD = process.env.DBPWD
-const DBHOST = process.env.DBHOST
-const DBPORT = process.env.DBPORT
-const DB = process.env.DB
+const database = mysql.createPool({
+  host: process.env.DBHOST,
+  port: Number(process.env.DBPORT || 3306),
+  user: process.env.DBUSER,
+  password: process.env.DBPWD,
+  database: process.env.DB,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+  charset: "utf8mb4",
+});
 
-export default new Pool({
-    connectionString:`${DBSERVER}://${DBUSER}:${encodeURIComponent(DBPWD)}@${DBHOST}:${DBPORT}/${DB}`
-})
+export default database;

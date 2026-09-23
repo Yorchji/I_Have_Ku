@@ -16,14 +16,14 @@ dotenv.config()
 
 
 const app =express()
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 // swagger
 const swaggerfile = fs.readFileSync('services/swagger.yaml','utf-8')
 const swaggerDoc = yaml.parse(swaggerfile)
+const allowedOrigins = (process.env.FRONTEND_ORIGINS || 'http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173,http://127.0.0.1:4173')
+    .split(',').map(origin => origin.trim()).filter(Boolean)
 app.use(cors({
-    origin:['http://localhost', 'http://127.0.0.1',
-            'http://localhost:5173','http://127.0.0.1:5173',
-            'http://localhost:4173','http://127.0.0.1:4173'], //Domain ของ Frontend
+    origin: allowedOrigins,
     methods:['GET','POST','PUT','DELETE'], //Method ที่อนุญาต
     credentials:true  //ให้ส่งข้อมูล Header+Cookie ได้
 }))
