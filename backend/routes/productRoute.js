@@ -38,7 +38,7 @@ router.delete('/products/:id',
 router.post('/products/uploadimg', 
   authenticateToken, 
   checkRole('admin'), 
-  productC.uploadProductImage
+  productC.uploadProduct
 )
 
 export default router

@@ -11,8 +11,12 @@ import swaggerUI from "swagger-ui-express"
 import yaml from "yaml"
 // ใช้ File
 import fs from "fs"
+import path from "path"                          // ← เพิ่ม
+import { fileURLToPath } from "url"  
 dotenv.config()
 
+const __filename = fileURLToPath(import.meta.url)  // ← เพิ่ม
+const __dirname = path.dirname(__filename)          // ← เพิ่ม
 
 
 const app =express()
@@ -30,9 +34,8 @@ app.use(cors({
 
 app.use(bodyParser.json())
 app.use(cookieParser());
-app.use("/img_pd",express.static("img_pd"))
-app.use("/img_mem",express.static("img_mem"))
-
+app.use("/img_pd", express.static(path.join(__dirname, "img_pd")))   // ← เปลี่ยน
+app.use("/img_mem", express.static(path.join(__dirname, "img_mem"))) 
 app.use(productRoute)
 app.use(memberRoute)
 app.use(cartRoute)
