@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const backend = env.VITE_PROXY_TARGET || 'http://119.59.102.161:3057'
   const proxy = Object.fromEntries(
-    ['/products', '/members', '/carts', '/img_pd', '/img_mem'].map((path) => [path, {
+    ['/products', '/members', '/carts', '/chat', '/img_pd', '/img_mem'].map((path) => [path, {
       target: backend,
       changeOrigin: true,
     }]),

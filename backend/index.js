@@ -6,6 +6,7 @@ import memberRoute from "./routes/memberRoute.js"
 import productRoute from "./routes/productRoute.js"
 import cookieParser from "cookie-parser"
 import cartRoute from "./routes/cartRoute.js"
+import chatRoute from "./routes/chatRoute.js"
 // import ส่วนที่ติดตั้งเข้ามา
 import swaggerUI from "swagger-ui-express"
 import yaml from "yaml"
@@ -39,6 +40,7 @@ app.use("/img_mem", express.static(path.join(__dirname, "img_mem")))
 app.use(productRoute)
 app.use(memberRoute)
 app.use(cartRoute)
+app.use(chatRoute)
 // กำหนด path ที่จะให้เรียกหน้า Document ขึ้นมา
 app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerDoc))
 app.get('/',(req,res)=>{

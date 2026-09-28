@@ -11,6 +11,7 @@ import CartList from './components/CartList.jsx'
 import ListMemberShow from './components/ListMemberShow.jsx'
 import AddProduct from './components/AddProduct.jsx'
 import EditProducts from './components/EditProducts.jsx'
+import ChatbotWidget from './components/ChatbotWidget.jsx'
 
 export default function App(){return <><MainMenu/><Routes>
   <Route path="/" element={<TheProduct/>}/><Route path="/login" element={<TheLogin/>}/><Route path="/register" element={<TheRegister/>}/>
@@ -20,4 +21,4 @@ export default function App(){return <><MainMenu/><Routes>
   <Route path="/admin/editproducts" element={<EditProducts/>}/>
   <Route path="/admin/orders" element={<CartList/>}/><Route path="/admin/addproducts" element={<AddProduct/>}/>
   <Route path="*" element={<div className="container py-5"><h2>ไม่พบหน้าที่ต้องการ</h2></div>}/>
-</Routes></>}
+</Routes><ChatbotWidget/></>}
