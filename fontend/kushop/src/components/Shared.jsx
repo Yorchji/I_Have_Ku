@@ -63,7 +63,7 @@ export function MainMenu() {
   return (
     <header className="site-header"><nav className="site-nav">
       <Link className="brand" to="/"><span className="brand-mark">K</span><span>I HAVE KU<small>CURATED GOODS</small></span></Link>
-      <div className="nav-links"><Link to="/">สินค้า</Link><Link to="/cartList">ตะกร้าของฉัน</Link>{member?.role === 'admin' && <><Link to="/admin/members">สมาชิก</Link><Link to="/admin/addproducts">เพิ่มสินค้า</Link></>}</div>
+      <div className="nav-links"><Link to="/">สินค้า</Link><Link to="/cartList">ตะกร้าของฉัน</Link>{member?.role === 'admin' && <><Link to="/admin/members">สมาชิก</Link><Link to="/admin/addproducts">เพิ่มสินค้า</Link><Link to="/admin/editproducts">แก้ไขสินค้า</Link></>}</div>
       <div className="nav-account">{member ? <><Link className="member-name" to="/pagemember">{member.memName || member.memEmail}</Link><button className="button button-outline" onClick={logout}>ออกจากระบบ</button></> : <><Link to="/login">เข้าสู่ระบบ</Link><Link className="button button-outline" to="/register">สมัครสมาชิก</Link></>}</div>
     </nav></header>
   )
